@@ -12,13 +12,19 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 class MarineAnimalSerializer(serializers.ModelSerializer):
-    # On imbrique les serializers pour avoir les noms au lieu des simples IDs
+
     category = CategorySerializer(read_only=True)
-    tags = TagSerializer(many=True, read_only=True)
+    category_name = serializers.ReadOnlyField(source='category.name')
+    tag_names = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='name',
+        source='tags'
+    )
 
     class Meta:
         model = MarineAnimal
-        # Les 7 champs minimum demandés par la consigne sont bien présents
+
         fields = [
             'id', 
             'name', 
@@ -28,5 +34,7 @@ class MarineAnimalSerializer(serializers.ModelSerializer):
             'thumb', 
             'cover', 
             'category', 
-            'tags'
+            'category_name',
+            'tags',
+            'tag_names'
         ]

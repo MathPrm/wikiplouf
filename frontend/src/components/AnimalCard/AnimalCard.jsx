@@ -19,6 +19,19 @@ const AnimalCard = ({ animal }) => {
         <p className="animal-card-description">
           {animal.description?.substring(0, 100)}...
         </p>
+        <div className="animal-card-category">
+          <span className="category-label">Groupe :</span>
+          <span className="category-name">
+            {animal.category_name || "Non classé"}
+          </span>
+        </div>
+        {animal.tag_names && animal.tag_names.length > 0 && (
+          <div className="animal-card-tags">
+            {animal.tag_names.map((tag, index) => (
+              <span key={index} className="tag-badge">#{tag}</span>
+            ))}
+          </div>
+        )}
         <button className="animal-card-button">
           Voir le détail
         </button>
