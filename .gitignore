@@ -41,3 +41,6 @@ Thumbs.db
 
 # Cache Django / Celery
 celerybeat-schedule
+
+/migrations
+/medias
