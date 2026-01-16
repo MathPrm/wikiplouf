@@ -69,10 +69,11 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "static" / "dist"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -138,3 +139,7 @@ STATIC_URL = 'static/'
 # Media files (User uploads)
 MEDIA_URL = '/medias/'
 MEDIA_ROOT = BASE_DIR / 'medias/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]

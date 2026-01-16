@@ -1,0 +1,14 @@
+.animal-list-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.loading-text {
+  text-align: center;
+  color: #646cff;
+  font-weight: bold;
+  margin-top: 50px;
+}

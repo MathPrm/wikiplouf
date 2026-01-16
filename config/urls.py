@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from wikiplouf.views import MarineAnimalViewSet, CategoryViewSet, TagViewSet
+from wikiplouf.views import IndexView
 
 router = DefaultRouter()
 
@@ -29,6 +30,7 @@ router.register(r'categories', CategoryViewSet, basename='category')
 router.register(r'tags', TagViewSet, basename='tag')
 
 urlpatterns = [
+    path('', IndexView.as_view(), name='index'),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls))
 ]
